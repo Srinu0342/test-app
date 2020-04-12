@@ -1,0 +1,18 @@
+#titanic{
+  background-image: url("https://allthatsinteresting.com/wordpress/wp-content/uploads/2017/11/titanic-sinking-photos.jpg");
+  background-size: cover;
+  background-position: left;
+  background-blend-mode: soft-light;
+ }
+
+.post1{
+  color: Brown;
+}
+
+body{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 30px;
+}

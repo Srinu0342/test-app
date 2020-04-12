@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ML Projects</title>
+    <link rel="stylesheet" type="text/css" href="../static/project.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>
+  </head>
+  <body>
+    <div class="header">
+      <h1 align='center'>Machine Learning Projects</h1>
+    </div>
+    <div class="container">
+  <div class="jumbotron" id='titanic'>
+    <h1>Titanic Problem</h1>
+    <p><br></p>
+    <p class="post1">This project is on the titanic dataset.<br>
+      You enter the passenger information and will get if the person could have survived.
+    </p>
+    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+      Check out
+    </button>
+
+    <a href="{{url_for('titanic')}}" target="_blank"><button type="button" class="btn btn-outline-primary">Try Out</button></a>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Titanic Dataset Problem</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>This is the famous titanic dataset problem where we predict if a passenger could have survived the accident.</p>
+        <h4>RMS Titanic</h4>
+    <p>The RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in the early morning hours of 15 April 1912, after it collided with an iceberg during its maiden voyage from Southampton to New York City. There were an estimated 2,224 passengers and crew aboard the ship, and more than 1,500 died, making it one of the deadliest commercial peacetime maritime disasters in modern history. The RMS Titanic was the largest ship afloat at the time it entered service and was the second of three Olympic-class ocean liners operated by the White Star Line. The Titanic was built by the Harland and Wolff shipyard in Belfast. Thomas Andrews, her architect, died in the disaster.
+    </p>
+        <form class="titanic_info" action="{{url_for('index')}}" method="get">
+          <label for="Name">Name:</label>
+          <input type="text" id="Name" name="name" placeholder="NAME"  autocomplete="off" required>
+          <p>Sex:
+          <input type="radio" id="sex_male" name="sex" value="male" required>
+          <label for="sex_male">Male</label>
+          <input type="radio" id="sex_female" name="sex" value="female" required>
+          <label for="sex_female">Female</label>
+          </p>
+          <label for="Age">Age:</label>
+          <input type="text" name="age" id="Age" placeholder="AGE" autocomplete="off" required>
+        <p>Passenger Class:
+          <input type="radio" id="class1" name="class" value="1" required>
+            <label for="class1">1</label>
+          <input type="radio" name="class" id="class2" value="2" required>
+            <label for="class2">2</label>
+          <input type="radio" name="class" id="class3" value="3" required>
+            <label for="class3">3</label>
+        </p>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" name="submit" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Submit</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% if name=='Default' %}
+<!--modal auto-->
+{% else %}
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5>Result</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>{{prediction}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<br><br><br>
+</div>
+<div class="container">
+<div class="jumbotron">
+<h1>Upcoming project</h1>
+<p>Stay tuned for new project</p>
+</div>
+</div>
+  </body>
+</html>
