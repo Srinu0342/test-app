@@ -24,12 +24,11 @@
   <label for="Age">Age:</label>
   <input type="text" name="age" id="Age" placeholder="AGE" required>
 <p>Passenger Class:
-  <input type="radio" id="class1" name="class" value="1" required>
-    <label for="class1">1</label>
-  <input type="radio" name="class" id="class2" value="2" required>
-    <label for="class2">2</label>
-  <input type="radio" name="class" id="class3" value="3" required>
-    <label for="class3">3</label>
+  <select class="dropdown" name="class" required>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
   <br>
   <br>
   <input type="submit" name="submit" placeholder="Submit">
