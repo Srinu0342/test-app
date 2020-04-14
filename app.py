@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, jsonify, make_response
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField
 import pandas as pd
@@ -94,22 +94,45 @@ def titanic():
 
 @app.route('/titanic/result',methods=['GET','POST'])
 def Tresult():
-    name=request.args.get('name').rstrip()
-    name1=name.split()[0]
-    sex=request.args.get('sex').rstrip()
-    age=request.args.get('age').rstrip()
-    pclass=request.args.get('class').rstrip()
-    a=[name1,sex,age,pclass]
+    
+    try:
+        name=request.form['name']
+    except:
+        name='Default'
+
+    #sex=request.args.get('sex')   for get method in form
+    try:
+        sex=request.form['sex']
+    except:
+        sex='male'
+        
+    try:
+        age=request.form['age']#for post method in form
+    except:
+        age='20'
+        
+    try:
+        pclass=request.form['class']
+    except:
+        pclass='1'
+
+    name1=name.rstrip().split()[0]
+    a=[name1,sex.rstrip(),age.rstrip(),pclass.rstrip()]
     f=open("model.dat","rb")
     pre=pickle.load(f)
     x=dataprep(a)
     ans=pre.predict(x)
-    if ans[0]==0:
-        prediction='Passenger will not survive'
-    else:
-        prediction='Passenger will survive'
 
-    return render_template('titanic_result.html',prediction=prediction)
+    if name!='Default':
+        if ans[0]==0 :
+            prediction='Passenger will not survive'
+        else:
+            prediction='Passenger will survive'
+    else:
+        prediction='first fill up the form properly'
+
+    f.close()
+    return jsonify(prediction)
 
 if __name__=='__main__':
     app.run(debug=True)
