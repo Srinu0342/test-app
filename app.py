@@ -77,6 +77,7 @@ def index():
     pre=pickle.load(f)
     x=dataprep(a)
     ans=pre.predict(x)
+    f.close()
 
     if name!='Default':
         if ans[0]==0 :
