@@ -47,7 +47,7 @@ def index():
     except:
         name='Default'
 
-    name1=name.rstrip().split()[0]
+    name1=name.strip().split()[0]
 
     #sex=request.args.get('sex')   for get method in form
     try:
@@ -72,7 +72,7 @@ def index():
     except:
         pclass='1'
 
-    a=[name1,sex.rstrip(),age.rstrip(),pclass.rstrip()]
+    a=[name1,sex.strip(),age.strip(),pclass.strip()]
     f=open("model.dat","rb")
     pre=pickle.load(f)
     x=dataprep(a)
