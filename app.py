@@ -133,7 +133,7 @@ def Tresult():
         prediction='first fill up the form properly'
 
     f.close()
-    return jsonify(prediction)
+    return prediction
 
 if __name__=='__main__':
     app.run(debug=True)
